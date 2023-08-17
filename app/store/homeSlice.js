@@ -4,11 +4,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export const homeSlice = createSlice({
   name: "home",
   initialState: {
-    url: { name: "AOA" },
+    url: {},
     genres: {},
   },
   reducers: {
     getApiConfiguration: (state, action) => {
+      console.log("I am called", action.payload);
       state.url = action.payload;
     },
     getGenre: (state, action) => {
