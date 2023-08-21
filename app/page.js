@@ -7,6 +7,7 @@ import { getApiConfiguration } from "./store/homeSlice";
 import HeroBanner from "@/components/HeroBanner/HeroBanner";
 import Navbar from "@/components/Header/Navbar";
 import Footer from "@/components/Footer/Footer";
+import Trending from "@/components/Trending/Trending";
 
 const fetchFromUrl = async () => {
   const response = await fetch(`${BaseUrl}/configuration`, {
@@ -25,6 +26,10 @@ export default function Home() {
   const { data, error, isLoading } = useQuery("config", fetchFromUrl);
 
   useEffect(() => {
+    console.log("component mount");
+  }, []);
+
+  useEffect(() => {
     console.log("dispatching");
     if (data) {
       const url = {
@@ -38,6 +43,7 @@ export default function Home() {
     <>
       <Navbar />
       <HeroBanner />
+      <Trending />
       <Footer />
     </>
   );

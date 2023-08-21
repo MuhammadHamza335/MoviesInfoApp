@@ -28,12 +28,12 @@ const HeroBanner = () => {
   const { data, error, isLoading } = useQuery("upcoming", fetchMovieUpcoming);
 
   useEffect(() => {
-    console.log("changing bg image");
+    // console.log("changing bg image");
     if (data) {
       const bg =
         url.backdrop +
         data.results[Math.floor(Math.random() * 20)]?.backdrop_path;
-      console.log(bg);
+      // console.log(bg);
       setBackground(bg);
     }
   }, [data]);
@@ -48,7 +48,7 @@ const HeroBanner = () => {
     <div className="heroBanner">
       <div className="backdrop-img">
         <LazyLoadImage className="" alt="" effect="blur" src={background} />
-        <Image src={background} alt="banner" width={500} height={500} />
+        {/* <Image src={background} alt="banner" width={500} height={500} /> */}
       </div>
 
       <div className="opacity-layer"></div>

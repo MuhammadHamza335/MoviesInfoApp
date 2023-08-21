@@ -18,7 +18,7 @@ export default function Navbar() {
         <Image className="" alt="" src={logo} />
 
         <AiOutlineMenu
-          className="flex md:hidden cursor-pointer w-7 h-7"
+          className="flex md:hidden cursor-pointer w-7 h-7 text-white"
           onClick={showNav}
         />
 
@@ -44,7 +44,7 @@ export default function Navbar() {
         <button
           className={`${
             toggle ? " flex" : " hidden"
-          } text-indigo-800 hover:bg-gray-300 mx-auto md:mx-0 md:flex md:mt-0 items-center justify-center font-medium bg-gray-100 px-1 p-2 rounded-lg mt-4 w-24`}
+          } text-black hover:bg-pink-500 mx-auto md:mx-0 md:flex md:mt-0 items-center justify-center  bg-gray-100 px-1 p-2 rounded-lg mt-4 w-24 font-semibold`}
         >
           Login
         </button>
