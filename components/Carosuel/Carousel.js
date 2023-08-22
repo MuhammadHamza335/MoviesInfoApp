@@ -48,7 +48,10 @@ const Carousel = ({ data, loading, endpoint, title }) => {
 
   return (
     <div className="carousel">
-      <div className="wrapper">
+      <div
+        className="wrapper"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         {title && <div className="carouselTitle">{title}</div>}
         <BsFillArrowLeftCircleFill
           className="carouselLeftNav arrow"

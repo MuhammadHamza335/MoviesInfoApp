@@ -3,29 +3,18 @@ import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import { ApiKey, BaseUrl } from "@/utils/constants";
+import { fetchFromUrl } from "@/utils/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./style.scss";
-
-const fetchMovieUpcoming = async () => {
-  const response = await fetch(`${BaseUrl}/movie/upcoming`, {
-    headers: {
-      Authorization: "bearer " + ApiKey,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
-};
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
   const [query, setQuery] = useState("");
   const { url } = useSelector((state) => state.home);
 
-  const { data, error, isLoading } = useQuery("upcoming", fetchMovieUpcoming);
+  const { data, error, isLoading } = useQuery("upcoming", () =>
+    fetchFromUrl("/movie/upcoming")
+  );
 
   useEffect(() => {
     // console.log("changing bg image");
@@ -33,7 +22,7 @@ const HeroBanner = () => {
       const bg =
         url.backdrop +
         data.results[Math.floor(Math.random() * 20)]?.backdrop_path;
-      // console.log(bg);
+      console.log(bg);
       setBackground(bg);
     }
   }, [data]);

@@ -11,7 +11,7 @@ import "./style.scss";
 // import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "@/public/images/no-poster.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { ApiKey, BaseUrl } from "@/utils/constants";
+import { fetchFromUrl } from "@/utils/constants";
 import { useQuery } from "react-query";
 import CircleRating from "../CircularRating/CircleRating";
 import { PlayIcon } from "./PlayButton";
@@ -24,24 +24,14 @@ const DetailsBanner = ({ video, crew, mediaType, id }) => {
   const [videoId, setVideoId] = useState(null);
 
   //   const { mediaType, id } = useParams();
-  const fetchDetails = async () => {
-    const response = await fetch(`${BaseUrl}/${mediaType}/${id}`, {
-      headers: {
-        Authorization: "bearer " + ApiKey,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  };
 
   const {
     data,
     error,
     isLoading: loading,
-  } = useQuery(`/${mediaType}/${id}`, fetchDetails);
+  } = useQuery(`/${mediaType}/${id}`, () =>
+    fetchFromUrl(`/${mediaType}/${id}`)
+  );
   //   const { data, loading } = useFetch(`/${mediaType}/${id}`);
 
   const { url } = useSelector((state) => state.home);
