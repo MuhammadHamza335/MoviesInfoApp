@@ -100,16 +100,16 @@ const Carousel = ({ data, loading, endpoint, title }) => {
             })}
           </div>
         ) : (
-          <>
-            {console.log("skeleton")}
-            <div className="loadingSkeleton">
-              {skItem()}
-              {skItem()}
-              {skItem()}
-              {skItem()}
-              {skItem()}
-            </div>
-          </>
+          <div
+            className="loadingSkeleton"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            {skItem()}
+            {skItem()}
+            {skItem()}
+            {skItem()}
+            {skItem()}
+          </div>
         )}
       </div>
     </div>

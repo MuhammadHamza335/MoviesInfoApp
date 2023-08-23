@@ -2,10 +2,11 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
-import Image from "next/image";
+
 import { fetchFromUrl } from "@/utils/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./style.scss";
+import Link from "next/link";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -54,7 +55,9 @@ const HeroBanner = () => {
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={searchQueryHandler}
             />
-            <button>Search</button>
+            <Link href={`/search/${query}`}>
+              <button>Search</button>
+            </Link>
           </div>
         </div>
       </div>
